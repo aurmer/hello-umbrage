@@ -1,0 +1,5 @@
+
+
+type AppState = {
+  greeting: string
+}
