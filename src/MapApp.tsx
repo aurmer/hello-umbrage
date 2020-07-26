@@ -3,14 +3,19 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const MapApp: React.SFC = () => {
 
-  const greeting: string = useSelector( (state: AppState) => state.greeting )
-  const dispatch = useDispatch()
+  // const greeting: string = useSelector( (state: AppState) => state.greeting )
+  // const dispatch = useDispatch()
    
 
   return (
-    <>
-    <button onClick={()=>dispatch({type:"SEARCH"})}>{greeting}</button>
-    </>
+    <section className="mapBody">
+      <aside className="mapInfo">
+
+      </aside>
+      <figure className="map">
+
+      </figure>
+    </section>
   )
 }
 

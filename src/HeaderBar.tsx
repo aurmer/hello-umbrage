@@ -6,20 +6,22 @@ interface HeaderBarProps {
 
 const HeaderBar: React.SFC<HeaderBarProps> = (props: HeaderBarProps) => {
   return (
-    <nav>
+    <nav className="upperNavbar">
       <div className="navLeft">
-        <h1>LandGate</h1>
-        <button>View Map</button>
-        <button>Lease/Sell</button>
-        <button>Buy</button>
-        <button>Appraise</button>
-        <button>About</button>
-        <button>Help</button>
+        <h1 className="title">LandGate</h1>
+        <a>View Map</a>
+        <a>Lease/Sell</a>
+        <a>Buy</a>
+        <a>Appraise</a>
+        <a>About</a>
+        <a>Help</a>
       </div>
       <div className="navRight">
         <a className="telephoneLink" href="tel:855-867-3876">855-867-3876</a>
-        <button>Login</button>
-        <button>Sign Up</button>
+        <div className="accountButtonGrp" >
+          <a>Login</a>
+          <a>Sign Up</a>
+        </div>
       </div>
     </nav>
   )

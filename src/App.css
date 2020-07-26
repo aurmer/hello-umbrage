@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  background-image: url("/assets/images/main_screen_resize.png");
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 
+ * 
+ *  Top Navbar
+ *
+ */
+
+.upperNavbar {
+  flex-grow: 0;
+  display: flex;
+  height: 80px;
+  font-size: 1.3em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 0;
+  border-bottom: 2px solid #ebedeb;
+}
+
+.upperNavbar a {
+  box-sizing: content-box;
+  height: calc(100% - 10px);
+  font-size: 1em;
+  border: 0;
+  margin: 0 19px;
+  padding: 5px 8px 0 8px;
+  border-bottom-width: 5px;
+  border-bottom-color: rgba(139,55,6,0);
+  border-style: solid;
+  border-top-style: hidden;
+  border-image-slice: 1;
+  background: rgba(255,255,0,0);
+  transition-property: border-bottom-color;
+  transition-duration: .3s;
+  line-height: 70px;
+  cursor: pointer;
+}
+
+
+.upperNavbar a:hover {
+  border-bottom-color: rgba(139,55,6,1);
+}
+
+.upperNavbar .telephoneLink {
+  font-size: .95em;
+  margin: auto 25px;
+  text-decoration: none;
+  color: black;
+}
+
+.navLeft {
+  display:flex;
+  height: 100%;
+}
+
+.title {
+  margin: auto 28px;
+  font-size: 1.2em;
+}
+
+.navRight {
+  display: flex;
+  height: 100%;
+}
+
+.accountButtonGrp {
+  display: flex;
+  justify-content: space-evenly;
+  border-left: 2px solid #ebedeb;
+  width: 235px;
+}
+
+.upperNavbar .accountButtonGrp a {
+  margin: 0;
+}
+
+
+/* 
+ * 
+ *  Main Map section 
+ *
+ */
+
+ .mapBody {
+   display: flex;
+   height: calc(100vh - 82px);
+ }
+
+ .mapInfo {
+   width: 612px;
+   margin: 35px 20px 0 25px;
+   overflow: hidden auto;
+ }
+
+ .map {
+   flex: 1;
+   margin: 0;
+ }
