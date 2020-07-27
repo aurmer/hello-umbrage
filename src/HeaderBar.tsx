@@ -17,7 +17,7 @@ const HeaderBar: React.SFC<HeaderBarProps> = (props: HeaderBarProps) => {
         <a>Help</a>
       </div>
       <div className="navRight">
-        <a className="telephoneLink" href="tel:855-867-3876">855-867-3876</a>
+        <address><a className="telephoneLink" href="tel:855-867-3876">855-867-3876</a></address>
         <div className="accountButtonGrp" >
           <a>Login</a>
           <a>Sign Up</a>
