@@ -11,7 +11,7 @@ const MapAside: React.SFC = () => {
    
 
   return (
-    <aside className="mapAside" onLoad={()=>alert('hi')}>
+    <aside className="map-aside">
       <MapSearchBar />
       <MapSearchResults />
       <MapNearbyListings />

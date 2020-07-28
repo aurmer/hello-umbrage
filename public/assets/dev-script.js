@@ -11,12 +11,12 @@
   
   window.addEventListener('keydown', (e) => {
     const key = e.keyCode
-    const isCtrl = e.ctrlKey
+    const isModified = e.ctrlKey && e.shiftKey
     
-    if(isCtrl) {
+    
+    if(isModified) {
       if(key===49) viewApp()
       if(key===50) viewMockup()
-      if(key===51) viewMockupBehindApp()
     }
   })
 
@@ -31,13 +31,7 @@
   function viewMockup () {
     console.log('"View Mockup" mode')
     mockupDiv.style.display = "block"
-    mockupDiv.style.zIndex = "0"
-  }
-
-  function viewMockupBehindApp () {
-    console.log('"View Mockup behind App" mode')
-    mockupDiv.style.display = "block"
-    mockupDiv.style.zIndex = "-1"
+    mockupDiv.style.zIndex = "10"
   }
 
 })()

@@ -18,8 +18,9 @@
 1. create search form
   - search input, select, and submit
   - input and submit appear combined as mockup displays
-...
+1. lay out results
 1. aquire info icon from iconmonstr.com. Color it to match mockup.
+1. embed leaflet map
 
 
 

@@ -8,7 +8,7 @@ const MapEmbed: React.SFC = () => {
    
 
   return (
-    <figure className="mapEmbed">
+    <figure className="map-embed">
 
     </figure>
   )

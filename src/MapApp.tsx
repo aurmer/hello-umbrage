@@ -10,7 +10,7 @@ const MapApp: React.SFC = () => {
    
 
   return (
-    <section className="mapApp">
+    <section className="map-app">
       <MapAside />
       <MapEmbed />
     </section>
