@@ -10,7 +10,7 @@ const HeaderBar: React.SFC<HeaderBarProps> = (props: HeaderBarProps) => {
       <div className="navLeft">
         <h1 className="title">LandGate</h1>
         <a>View Map</a>
-        <a>Lease/Sell</a>
+        <a>Lease / Sell</a>
         <a>Buy</a>
         <a>Appraise</a>
         <a>About</a>

@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  background-image: url("/assets/images/main_screen_resize.png");
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -14,7 +13,7 @@ body {
   flex-grow: 0;
   display: flex;
   height: 80px;
-  font-size: 1.3em;
+  font-size: 1.26em;
   justify-content: space-between;
   align-items: center;
   padding: 0 0 0 0;
@@ -33,6 +32,7 @@ body {
   transition-duration: .3s;
   line-height: 70px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 
@@ -54,8 +54,8 @@ body {
 }
 
 .title {
-  margin: auto 28px;
-  font-size: 1.2em;
+  margin: auto 29px;
+  font-size: 1.22em;
 }
 
 .navRight {
@@ -93,8 +93,8 @@ address {
  .mapAside {
    display: flex;
    flex-direction: column;
-   width: 608px;
-   padding: 38px 20px 0 28px;
+   width: 606px;
+   padding: 38px 20px 0 30px;
    overflow: hidden auto;
    border-right: 2px solid #ebedeb;
    box-sizing: content-box;
@@ -103,14 +103,6 @@ address {
  .mapEmbed {
    flex: 1;
    margin: 0;
- }
- 
- .mapAside div {
-  padding: 10px 0;
-  height: 10px;
-  width: 608px;
-  margin: 0;
-  background-color: rgba(0,0,0,.2);
  }
 
 
@@ -126,20 +118,73 @@ address {
   height: 53px;
 }
 
-.searchInput {
-  font-size: 1.5em;
-  flex: 1;
-  margin-right: 23px;
+.searchBar form {
+  display: contents;
+}
+
+.searchInputContainer {
+  display: flex;
   height: 100%;
-  border: 2px solid #808080;
+  margin-right: 23px;
+  border: 1px solid #808080;
   border-radius: 5px;
   box-sizing: border-box;
+  flex: 1;
+}
+
+.searchInput {
+  flex: 1;
+  font-size: 1.14em;
+  padding: 0 0 0 15px;
+  height: 100%;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 0;
+}
+
+.searchSubmit {
+  flex: 0;
+  min-width: 51px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  background-image: url('/assets/icons/search-icon.svg');
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: center;
 }
 
 .searchCatagorySelect {
-  font-size: 1.2em;
-  padding-top: 0;
-  padding-bottom: 0;
+  font-size: 1.13em;
+  padding: 0 0 0 10px;
+  border: 1px solid #808080;
+  border-radius: 5px;
   width: 187px;
   height: 100%;
+  box-sizing: border-box;
+}
+
+.searchCatagorySelect::before {
+  content: 'h';
+}
+
+.customDropdownArrow {
+  box-sizing: border-box;
+  background:
+    linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 23px) calc(50% + 0px),
+    calc(100% - 15px) calc(50% + 0px),
+    100% 0;
+  background-size:
+    8px 8px,
+    8px 8px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+  appearance:none;
+
+  /* reset */
 }

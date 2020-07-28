@@ -9,10 +9,15 @@ const MapSearchBar: React.SFC = () => {
 
   return (
     <section className="searchBar">
-      <input className="searchInput" />
-      <select className="searchCatagorySelect">
-        <option>Mineral Rights</option>
-      </select>
+      <form>
+        <div className="searchInputContainer">
+        <input className="searchInput" placeholder={"3131 W Bellfort Ave, Houston, TX"}/>
+        <input className="searchSubmit" type="submit" value=""/>
+        </div>
+        <select className="searchCatagorySelect customDropdownArrow">
+          <option>Mineral Rights</option>
+        </select>
+      </form>
     </section>
   )
 }

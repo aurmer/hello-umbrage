@@ -8,9 +8,9 @@ const MapSearchResults: React.SFC = () => {
    
 
   return (
-    <>
-
-    </>
+    <section className="searchResults">
+      
+    </section>
   )
 }
 
