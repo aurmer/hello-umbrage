@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import MapSearchBar from './MapSearchBar'
 import MapSearchResults from './MapSearchResults'
 import MapNearbyListings from './MapNearbyListings'

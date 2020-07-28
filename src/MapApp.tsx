@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import MapAside from './MapAside'
 import MapEmbed from './MapEmbed'
 

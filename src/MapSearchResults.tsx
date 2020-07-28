@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
 const MapSearchResults: React.SFC = () => {
 
@@ -11,7 +10,7 @@ const MapSearchResults: React.SFC = () => {
     <section className="search-results">
       <h3 className="map-aside-section-title">Search Results</h3>
       <div className="search-result-card">
-        <img className="search-result-img"/>
+        <img className="search-result-img" alt="property"/>
         <div className="search-result-info">
           <h4 className="search-result-name">Toro Field Caesar TX</h4>
           <p className="search-result-location">Bee County, TX / Permian Basin</p>

@@ -1,7 +1,6 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
-const ListingSnippet: React.SFC<ListingSnippetProp> = (props: ListingSnippetProp) => {
+const ListingSnippet: React.SFC<ListingSnippetProps> = (props: ListingSnippetProps) => {
   
   const infoIcon = (<img className="info-icon" src="assets/icons/iconmonstr-info-5-orange.svg" alt="(info)"/>)
 

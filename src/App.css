@@ -55,11 +55,16 @@ body {
   box-sizing: border-box;
   border-bottom: 5px solid transparent;
   background: transparent;
+  text-decoration: none;
   transition-property: border-bottom-color;
   transition-duration: .3s;
   line-height: 70px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.upper-navbar a:visited {
+  color: black;
 }
 
 
@@ -139,6 +144,8 @@ body {
 .map-embed {
   flex: 1;
   margin: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 
@@ -331,7 +338,7 @@ body {
   border-top-right-radius: 5px;
   font-size: .8em;
   line-height: 1.5em;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -375,13 +382,14 @@ body {
   padding: 0 6px 0 2px;
   border: 1px solid #808080;
   border-radius: 3px;
+  background-color: #ebedeb;
   font-size: .76em;
   line-height: 1.5em;
   text-align: right;
 }
 
 .green-dot {
-  background-color: green;
+  background-color: #54a326;
   border-radius: 50%;
   width: 10px;
   height: 10px;
@@ -410,3 +418,17 @@ body {
 .listing-spacer {
   height: 22px;
 }
+
+/*
+ *
+ * Map
+ *
+ */
+
+ #map {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+ }

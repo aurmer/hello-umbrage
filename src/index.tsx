@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import { Provider } from 'react-redux'
 import createStore from './redux/store'
+import 'leaflet/dist/leaflet.css'
 
 const store = createStore()
 

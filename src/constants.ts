@@ -1,4 +1,4 @@
-export const locations = [
+export const locations: Array<LotLocation> = [
   {
     name: "Country Road Lot 266",
     price: 395000,

@@ -3,15 +3,23 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const MapSearchBar: React.SFC = () => {
 
-  // const greeting: string = useSelector( (state: AppState) => state.greeting )
-  // const dispatch = useDispatch()
+  const searchString: string = useSelector( (state: AppState) => state.searchInputString )
+  const dispatch = useDispatch()
    
+  const updateSearchField = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({type:"UPDATE_SEARCH",value:e.currentTarget.value})
+  }
+
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    dispatch({type:"SUBMIT_SEARCH"})
+  }
 
   return (
     <section className="search-bar">
-      <form>
+      <form onSubmit={submitForm}>
         <div className="search-input-container">
-        <input className="search-input"/>
+        <input className="search-input" value={searchString} onChange={updateSearchField}/>
         <input className="search-submit" type="submit" value=""/>
         </div>
         <select className="search-catagory-select custom-dropdown-arrow">
