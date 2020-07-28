@@ -127,8 +127,8 @@ body {
 }
 
 .map-aside {
-  display: grid;
-  grid-template-rows: 91px 286px 1fr;
+  display: flex;
+  flex-direction: column;
   width: 656px;
   height: calc(100vh - 82px);
   overflow: hidden;
