@@ -5,7 +5,8 @@
                           position: absolute;
                           height: 100vh;
                           width: 100vw;
-                          background-image: url('/assets/images/main_screen_resize.png');">
+                          background-image: url('/assets/images/mockup_resize.png');
+                          overflow: hidden;">
   `)
   
   window.addEventListener('keydown', (e) => {
@@ -19,22 +20,24 @@
     }
   })
 
+  const mockupDiv = document.getElementById('mockup')
+
   function viewApp () {
     console.log('"View App" mode')
-    document.getElementById('mockup').style.display = "none"
-    document.querySelector('body').style.backgroundImage = ``
+    mockupDiv.style.display = "none"
+    mockupDiv.style.zIndex = "0"
   }
 
   function viewMockup () {
     console.log('"View Mockup" mode')
-      document.getElementById('mockup').style.display = "block"
-      document.querySelector('body').style.backgroundImage = ``
+    mockupDiv.style.display = "block"
+    mockupDiv.style.zIndex = "0"
   }
 
   function viewMockupBehindApp () {
     console.log('"View Mockup behind App" mode')
-      document.getElementById('mockup').style.display = "none"
-      document.querySelector('body').style.backgroundImage = `url("/assets/images/main_screen_resize.png")`
+    mockupDiv.style.display = "block"
+    mockupDiv.style.zIndex = "-1"
   }
 
 })()
