@@ -20,7 +20,10 @@
   - input and submit appear combined as mockup displays
 1. lay out results
 1. aquire info icon from iconmonstr.com. Color it to match mockup.
-1. embed leaflet map
+1. tweak layout so Nearby Listings alone scrolls
+  - found that flexbox and grid both will not inforce the size of their children elements
+  - ultimately got the scrollbar by setting height of Nearby Listings container
+  - customized scrollbar for slicker look (comperable to Firefox)
 
 
 
@@ -32,3 +35,4 @@
   [`appearance`](https://developer.mozilla.org/en-US/docs/Web/CSS/appearance)
   which instructs the browser to render the element as one of many options.
   I used `appearance: none` to help draw a custom `<select>`.
+1. CSS experimental properties allowing webkit to customize scrollbar
