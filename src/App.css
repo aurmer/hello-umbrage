@@ -190,6 +190,7 @@ body {
   background-repeat: no-repeat;
   background-size: 24px;
   background-position: center;
+  cursor: pointer;
 }
 
 .search-catagory-select {
@@ -288,6 +289,7 @@ body {
   text-transform: uppercase;
   border: 0;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .maroon-bkgd {
@@ -346,6 +348,7 @@ body {
 
 .listing-star-icon {
   width: 20px;
+  cursor: pointer;
 }
 
 .listing-info {
