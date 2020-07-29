@@ -34,8 +34,8 @@ const MapEmbed: React.SFC = () => {
     {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       subdomains: 'abcd',
-      minZoom: 0,
-      maxZoom: 18,
+      minZoom: 4,
+      maxZoom: 14,
       // @ts-ignore - this isn't in the typing, but is required
       ext: 'png'
     });
@@ -45,6 +45,7 @@ const MapEmbed: React.SFC = () => {
   useEffect( () => {
     myMap.setView([mapCenter.lat,mapCenter.lng],mapZoom)
     results.forEach( (locID,idx) => {
+      console.log(locations[locID].latitude,locations[locID].longitude)
       const markerIcon = (idx === 0) ? focusResultIcon : blurredResultIcon
       L.marker([locations[locID].latitude,locations[locID].longitude],{
         icon: markerIcon

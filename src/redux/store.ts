@@ -44,8 +44,8 @@ function calcMapZoom (markers: {[key: string]: {lat: number,lng: number}},center
     const distFromCenter = Math.sqrt( Math.pow(mark.lat - center.lat,2) + Math.pow(mark.lng-center.lng,2) )
     return Math.max(acc,distFromCenter)
   },0)
-  console.log(largestDist)
-  return 8
+
+  return -6.5 * largestDist + 13
 }
 
 function calcMapStateAndSortResults (state: AppState,unsortedResults: Array<string>): {newMapCenter: {lat:number,lng:number}, newMapZoom: number, sortedResults: Array<string>} {
@@ -68,7 +68,7 @@ function calcMapStateAndSortResults (state: AppState,unsortedResults: Array<stri
   if(locCount) {
     mapCenter = {lat:latSum/locCount,lng:longSum/locCount}
     sortedResults = unsortedResults.sort(sortByDist.bind(null,state,state.mapCenter))
-    mapZoom = calcMapZoom(markerCollection,state.mapCenter)
+    mapZoom = calcMapZoom(markerCollection,mapCenter)
   }
 
   return {
