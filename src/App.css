@@ -338,7 +338,7 @@ body {
   border-top-right-radius: 5px;
   font-size: .8em;
   line-height: 1.5em;
-  letter-spacing: .08em;
+  letter-spacing: .12em;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -366,6 +366,8 @@ body {
 .list-name {
   font-size: 1em;
   font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .list-price {
@@ -407,6 +409,8 @@ body {
 
 .list-data {
   padding: 2px 0 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .info-icon {

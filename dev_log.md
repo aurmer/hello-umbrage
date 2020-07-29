@@ -24,6 +24,11 @@
   - found that flexbox and grid both will not inforce the size of their children elements
   - ultimately got the scrollbar by setting height of Nearby Listings container
   - customized scrollbar for slicker look (comperable to Firefox)
+1. embed leaflet map
+  - picked "Stamen terrain" tiles; this seemed comperable to mockup choice
+1. began deloping state.
+  - Took a few liberties with search function, "favorite" feature (stars on each listing)
+  - Control map center + zoom depending on search results
 
 
 

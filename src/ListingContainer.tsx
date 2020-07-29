@@ -1,30 +1,43 @@
 import React from 'react'
 import ListingSnippet from './ListingSnippet'
+import { useDispatch } from 'react-redux'
 
 const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) => {
 
-  // const greeting: string = useSelector( (state: AppState) => state.greeting )
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   String.prototype.reverse = function () {
     return this.split('').reverse().join('')
   }
 
-  function formatPrice (price: string): string {
-    return '$' + price.reverse()
-                      .replace(/(\d{3})/g,'$1,')
-                      .reverse()
-                      .replace(/^,/,'')
+  function formatNumberString (integer: number): string {
+    return integer.toString()
+                  .reverse()
+                  .replace(/(\d{3})/g,'$1,')
+                  .reverse()
+                  .replace(/^,/,'')
   }
 
-  const formattedPrice = formatPrice(props.price.toString())
+  function formatPrice (price: number): string {
+    return '$' + formatNumberString(price)
+  }
+
+  const formattedPrice = formatPrice(props.price)
+
+  function handleFavClick (e: React.MouseEvent<HTMLImageElement, MouseEvent>): void {
+    dispatch({type:"TOGGLE_FAVORITE",value:e.currentTarget.id})
+  }
+
+  function pickStar (): string {
+    return (props.favorite) ? "assets/icons/filled-star.svg" : "assets/icons/empty-star.svg"
+  }
   
     return (
     <>
       <div className="listing-card">
         <div className="listing-card-label">Lot For Sale</div>
         <div className="favorite-listing">
-          <img className="listing-star-icon" src="assets/icons/filled-star.svg" alt="favorite"/>
+          <img id={props.name+props.address} className="listing-star-icon" src={pickStar()} alt="favorite" onClick={handleFavClick}/>
         </div>
         <div className="listing-info">
           <div className="listing-col">
@@ -36,12 +49,12 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
             </div>
           </div>
           <div className="listing-col">
-            <ListingSnippet label="Street Address" data="66,440,961"/>
-            <ListingSnippet label="Net Mineral Acreage" data="26,993"/>
+            <ListingSnippet label="Street Address" data={props.address}/>
+            <ListingSnippet label="Net Mineral Acreage" data={formatNumberString(props.acreage)}/>
           </div>
           <div className="listing-col">
-            <ListingSnippet label="Location" data="Powder River Basin"/>
-            <ListingSnippet label="Price Per Acre" data="$563"/>
+            <ListingSnippet label="Location" data={props.location}/>
+            <ListingSnippet label="Price Per Acre" data={formatPrice(props.ppa)}/>
           </div>
         </div>
       </div>

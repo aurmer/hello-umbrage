@@ -12,6 +12,7 @@ type ListingInfoProps = {
   address: string,
   acreage: number,
   location: string,
+  favorite: boolean,
   ppa: number
 }
 
