@@ -10,8 +10,8 @@ type AppState = {
   mapCenter: {
     lat: number,
     lng: number,
-  }
-  mapZoom: number
+  } | null,
+  mapZoom: number | null
 }
 
 type CustAction = {

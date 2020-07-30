@@ -436,3 +436,7 @@ body {
    height: 100%;
    width: 100%;
  }
+
+ .popup-container {
+   font-size: 1.3em;
+ }

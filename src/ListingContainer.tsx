@@ -1,6 +1,7 @@
 import React from 'react'
 import ListingSnippet from './ListingSnippet'
 import { useDispatch } from 'react-redux'
+import { formatPrice, formatNumberAsString } from './util'
 
 const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) => {
 
@@ -8,18 +9,6 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
 
   String.prototype.reverse = function () {
     return this.split('').reverse().join('')
-  }
-
-  function formatNumberString (integer: number): string {
-    return integer.toString()
-                  .reverse()
-                  .replace(/(\d{3})/g,'$1,')
-                  .reverse()
-                  .replace(/^,/,'')
-  }
-
-  function formatPrice (price: number): string {
-    return '$' + formatNumberString(price)
   }
 
   const formattedPrice = formatPrice(props.price)
@@ -50,7 +39,7 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
           </div>
           <div className="listing-col">
             <ListingSnippet label="Street Address" data={props.address}/>
-            <ListingSnippet label="Net Mineral Acreage" data={formatNumberString(props.acreage)}/>
+            <ListingSnippet label="Net Mineral Acreage" data={formatNumberAsString(props.acreage)}/>
           </div>
           <div className="listing-col">
             <ListingSnippet label="Location" data={props.location}/>

@@ -1,3 +1,4 @@
+
 ;(function () {
 
   document.querySelector('body').insertAdjacentHTML('afterbegin',`
@@ -6,6 +7,7 @@
                           height: 100vh;
                           width: 100vw;
                           background-image: url('/assets/images/mockup_resize.png');
+                          z-index: 9999;
                           overflow: hidden;">
   `)
   
@@ -21,17 +23,16 @@
   })
 
   const mockupDiv = document.getElementById('mockup')
+  const mapDiv = document.getElementById('map')
 
   function viewApp () {
     console.log('"View App" mode')
     mockupDiv.style.display = "none"
-    mockupDiv.style.zIndex = "0"
   }
 
   function viewMockup () {
     console.log('"View Mockup" mode')
     mockupDiv.style.display = "block"
-    mockupDiv.style.zIndex = "10"
   }
 
 })()
