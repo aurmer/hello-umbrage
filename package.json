@@ -33,7 +33,7 @@
     "start": "node server/server.js",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
-    "build-github": "PUBLIC_URL=umbrage-landgate react-scripts build",
+    "build-github": "PUBLIC_URL= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
