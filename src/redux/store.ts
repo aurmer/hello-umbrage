@@ -1,8 +1,10 @@
 import { createStore, Reducer } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { locations } from '../constants'
+import { deepCopy } from '../util'
+import { filterLocationsBySearch,calcMapStateAndSortResults } from './stateFunctions'
 
-
+//State in which the app starts
 const initState: AppState = {
   locations: {},
   searchInputString: "",
@@ -12,82 +14,8 @@ const initState: AppState = {
   mapZoom: 6.5
 }
 
-function deepCopy (obj1: any): any {
-  return JSON.parse(JSON.stringify(obj1))
-}
-
-function filterLocationsBySearch (searchStr: string,acc: Array<string>,loc: StateLocation): Array<string> {
-  const lowerSearch = searchStr.toLowerCase()
-  if( lowerSearch.length > 0 &&
-      (loc.name.toLowerCase().includes(lowerSearch) ||
-      loc.streetAddress.toLowerCase().includes(lowerSearch))) {
-        const locID = loc.name+loc.streetAddress
-        acc.push(locID)
-      }
-    return acc
-}
-
-
-function sortByDist (state: AppState,center: {lat:number,lng:number},locIdA: string,locIdB: string): number {
-  const aLat = state.locations[locIdA].latitude
-  const aLng = state.locations[locIdA].longitude
-  const bLat = state.locations[locIdB].latitude
-  const bLng = state.locations[locIdB].longitude
-  const cLat = center.lat
-  const cLng = center.lng
-
-  const distA = Math.sqrt( Math.pow(cLat-aLat,2) + Math.pow(cLng-aLng,2) )
-  const distB = Math.sqrt( Math.pow(cLat-bLat,2) + Math.pow(cLng-bLng,2) )
-  return distA - distB
-}
-
-function calcMapZoom (markers: {[key: string]: {lat: number,lng: number}},center: {lat: number,lng: number}) {
-  const largestDist = Object.values(markers).reduce( (acc: number, mark: {lat: number,lng: number}): number => {
-    const distFromCenter = Math.sqrt( Math.pow(mark.lat - center.lat,2) + Math.pow(mark.lng-center.lng,2) )
-    return Math.max(acc,distFromCenter)
-  },0)
-  
-  if(largestDist === 0) {
-    return 13
-  }
-  return -3 * largestDist + 11
-}
-
-function calcMapStateAndSortResults (state: AppState,unsortedResults: Array<string>): {newMapCenter: {lat:number,lng:number} | null, newMapZoom: number | null, sortedResults: Array<string>} {
-  const locs = state.locations
-  const markerCollection: {[key: string]: {lat: number,lng: number}} = {}
-  let latSum = 0
-  let longSum = 0
-  
-  unsortedResults.forEach( (locID: string) => {
-    markerCollection[locID] = {lat:locs[locID].latitude, lng:locs[locID].longitude}
-    latSum += locs[locID].latitude
-    longSum += locs[locID].longitude
-  },{})
-  
-  let mapCenter = null
-  let mapZoom = null
-  let sortedResults: Array<string> = []
-  
-  const locCount = unsortedResults.length
-  if(locCount > 0) {
-    mapCenter = {lat:latSum/locCount,lng:longSum/locCount}
-    mapZoom = calcMapZoom(markerCollection,mapCenter)
-  }
-  
-  if(mapCenter) {
-    sortedResults = unsortedResults.sort(sortByDist.bind(null,state,mapCenter))
-  }
-
-  return {
-    newMapCenter: mapCenter,
-    newMapZoom: mapZoom,
-    sortedResults: sortedResults
-  }
-}
-
+//Reducer for this app's store
 const reducer: Reducer<AppState, CustAction> = (oldState: (AppState | undefined),action: CustAction) => {
-  
   const newState: AppState = (oldState) ? deepCopy(oldState) : initState
   
   if (action.type === "POPULATE_LOCATIONS") {
@@ -103,23 +31,24 @@ const reducer: Reducer<AppState, CustAction> = (oldState: (AppState | undefined)
   }
 
   else if (action.type === "SUBMIT_SEARCH" && newState.searchInputString !== "") {
-    newState.searchQuery = newState.searchInputString.trim()
     newState.searchInputString = newState.searchInputString.trim()
+    newState.searchQuery = newState.searchInputString
+
+    //filter by search and map to only id's
     const unsortedSearchResults = Object.values(newState.locations).reduce(filterLocationsBySearch.bind(null,newState.searchQuery),[])
+
+    //create new map view and sort results by closet to center of view
     const {newMapCenter,newMapZoom,sortedResults} = calcMapStateAndSortResults(newState,unsortedSearchResults)
+
+    //update state with new values
     newState.mapCenter = newMapCenter
     newState.mapZoom = newMapZoom
     newState.searchResults = sortedResults
   }
 
   else if (action.type === "SELECT_RESULT" && typeof action.value === "string") {
-    let matchingIdx: number = -1
-    newState.searchResults.forEach( (locID,idx)=> {
-      if(locID === action.value) {
-        matchingIdx = idx
-      } 
-    })
-    
+    //find matching index, splice the match out of the array and create a new array with it at the front
+    const matchingIdx: number = newState.searchResults.findIndex((locID)=>locID === action.value)
     if(matchingIdx >= 0) {
       const matchingElement: Array<string> = newState.searchResults.splice(matchingIdx,1)
       newState.searchResults = [...matchingElement,...newState.searchResults]

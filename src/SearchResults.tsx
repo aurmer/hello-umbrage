@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const MapSearchResults: React.SFC = () => {
+//This component is the Search Results section, left of the map.
+const SearchResults: React.SFC = () => {
   
-  //`loc` is the first sorted search result. This matches the focused icon on the map
+  //`loc` is the first element in the sorted search results. This matches the focused icon on the map
   const loc: StateLocation = useSelector( (state: AppState) => state.locations[state.searchResults[0]] )
 
-  const cardContent = (loc) ?
+  const cardContent: JSX.Element = (loc) ?
   (
     <>
       <img className="search-result-img" src={`assets/images/${loc.image}`} alt="property"/>
@@ -35,4 +36,4 @@ const MapSearchResults: React.SFC = () => {
   )
 }
 
-export default MapSearchResults
+export default SearchResults

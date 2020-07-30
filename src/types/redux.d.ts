@@ -1,9 +1,7 @@
 
 
 type AppState = {
-  locations: {
-    [key: string]: StateLocation
-  },
+  locations: StateLocationSet,
   searchInputString: string,
   searchQuery: string,
   searchResults: Array<string>,
@@ -44,6 +42,19 @@ type StateLocation = {
   favorite: boolean
 }
 
+type StateLocationSet = {
+  [key: string]: StateLocation
+}
+
 interface String {
   reverse(): string;
+}
+
+type MyLatLngArray = {
+  [key: string]: MyLatLng
+}
+
+type MyLatLng = {
+  lat: number,
+  lng: number
 }

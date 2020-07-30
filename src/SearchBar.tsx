@@ -1,20 +1,24 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-const MapSearchBar: React.SFC = () => {
+//This component is the search form section, left of the map.
+const SearchBar: React.SFC = () => {
 
+  //searchString is string currently displayed in the input
   const searchString: string = useSelector( (state: AppState) => state.searchInputString )
-  const dispatch = useDispatch()
-   
-  const updateSearchField = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const dispatch: Function = useDispatch()
+  
+  //value of search input is managed by store
+  const updateSearchField = (e: React.ChangeEvent<HTMLInputElement>): void => {
     dispatch({type:"UPDATE_SEARCH",value:e.currentTarget.value})
   }
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     dispatch({type:"SUBMIT_SEARCH"})
   }
 
+  //backgroundImage defined in js instead of css for build-step relative pathing
   const bckImg = {backgroundImage: "url('assets/icons/search-icon.svg')"}
 
   return (
@@ -32,4 +36,4 @@ const MapSearchBar: React.SFC = () => {
   )
 }
 
-export default MapSearchBar
+export default SearchBar

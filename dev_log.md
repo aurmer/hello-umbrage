@@ -6,38 +6,60 @@
 1. study typescript basics (first time using it)
 1. lay out redux boilerplate
 1. lay out top navigation section
-  - tweak `button:hover` to fade in the bottom border with css transition
-  - tweak font and spacing to line up buttons with mockup
+    - tweak `button:hover` to fade in the bottom border with css transition
+    - tweak font and spacing to line up buttons with mockup
 1. lay out map info (left) section
-  - add padding around content of section
-  - ensure similar alignment regardless of scrollbar size
+    - add padding around content of section
+    - ensure similar alignment regardless of scrollbar size
 1. Small meta-development project: "View Mode" feature
-  - CTRL+1,2,3 will switch view modes to see the mockup or the app.
-  - I find this very helpful to lock down sizing. No guesswork.
-  - This feature is completely contained within 'assets/dev-script.js'
+    - CTRL+1,2,3 will switch view modes to see the mockup or the app.
+    - I find this very helpful to lock down sizing. No guesswork.
+    - This feature is completely contained within 'assets/dev-script.js'
 1. create search form
-  - search input, select, and submit
-  - input and submit appear combined as mockup displays
+    - search input, select, and submit
+    - input and submit appear combined as mockup displays
 1. lay out results
 1. aquire info icon from iconmonstr.com. Color it to match mockup.
 1. tweak layout so Nearby Listings alone scrolls
-  - found that flexbox and grid both will not inforce the size of their children elements
-  - ultimately got the scrollbar by setting height of Nearby Listings container
-  - customized scrollbar for slicker look (comperable to Firefox)
+    - found that flexbox and grid both will not inforce the size of their children elements
+    - ultimately got the scrollbar by setting height of Nearby Listings container
+    - customized scrollbar for slicker look (comperable to Firefox)
 1. embed leaflet map
-  - picked "Stamen terrain" tiles; this seemed comperable to mockup choice
-1. began deloping state.
-  - Took a few liberties with search function, "favorite" feature (stars on each listing)
-  - Control map center + zoom depending on search results
-
-
+    - picked "Stamen terrain" tiles; this seemed comperable to mockup choice
+1. begin deloping state.
+    - Took a few liberties with search function, "favorite" feature (stars on each listing)
+    - Control map center + zoom depending on search results
+1. made searches sorted
+    - 'ascending distance from map center' is sort order
+    - first serach result is focused
+    - remaining search results are "nearby locations"
+1. TODO change search results to make more sense. The idea of returning things not in the results, but geographically close to the focus, is really cool.
+      - new marker color for "nearby"
+      - new layout for Search Results to show multiple
+1. connect state changes to Leaflet API
+    - useEffect to run vanilla js on Leaflet objects
+    - dispatch() so the map can change the focused search result
+    - I chose to bypass the use of in favor of learning the vanilla API. I wanted to learn
+    the basics and only handle the necessary API surface area
+1. refactor
+    - clean
+    - break out of callback hell
+    - move pure functions into modules
+    - grab a glass of orange juice
+    - comment
+    - collapse and remove some useless React components I made along the way
+1. document
 
 ## Things I learned while working on this project
 
-1. Typescript basics.
-1. Redux has hooks that (more tursely) accomplishes what `connect()` can do.
+1. Typescript basics
+1. Redux has hooks that (more tursely) accomplishes what `connect()` can do
 1. CSS experimental property 
   [`appearance`](https://developer.mozilla.org/en-US/docs/Web/CSS/appearance)
   which instructs the browser to render the element as one of many options.
-  I used `appearance: none` to help draw a custom `<select>`.
+  I used `appearance: none` to help draw a custom `<select>`
 1. CSS experimental properties allowing webkit to customize scrollbar
+1. Typescript type creation
+1. Leaflet view and markers
+1. Typescript ignore directive for out of date library
+1. Leaflet events and popups

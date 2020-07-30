@@ -3,17 +3,18 @@ import ListingSnippet from './ListingSnippet'
 import { useDispatch } from 'react-redux'
 import { formatPrice, formatNumberAsString } from './util'
 
-const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) => {
+//This component is the property listing card
+const ListingCard: React.SFC<ListingInfoProps> = (props: ListingInfoProps) => {
 
   const dispatch = useDispatch()
 
-  const formattedPrice = formatPrice(props.loc.price)
-
+  //clicking on fav star will toggle favorite prop in store
   function handleFavClick (id: string,e: React.MouseEvent<HTMLImageElement, MouseEvent>): void {
     e.stopPropagation()
     dispatch({type:"TOGGLE_FAVORITE",value:id})
   }
 
+  //clicking on card selects the listing on map
   function handleListingClick (id: string): void {
     dispatch({type:"SELECT_RESULT",value:id})
   }
@@ -30,7 +31,7 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
         <div className="listing-info">
           <div className="listing-col">
             <div className="list-name">{props.loc.name}</div>
-            <div className="list-price">{formattedPrice}</div>
+            <div className="list-price">{formatPrice(props.loc.price)}</div>
             <div className="active-badge" style={(!props.loc.active) ? {display:"none"} : {}}>
               <div className="green-dot"/>
               Active
@@ -50,5 +51,4 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
   )
 }
 
-export default ListingContainer
-
+export default ListingCard

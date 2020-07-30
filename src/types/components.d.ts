@@ -16,5 +16,5 @@ type HeaderBarProps = {
 type PageLinkProps = {
   name: string,
   href: string,
-  active: string
+  activePage: string
 }

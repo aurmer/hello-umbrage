@@ -45,6 +45,7 @@ body {
   align-items: center;
   padding: 0 0 0 0;
   border-bottom: 2px solid #ebedeb;
+  user-select: none;
 }
 
 .upper-navbar a {
@@ -332,6 +333,7 @@ body {
   height: 130px;
   width: 601px;
   box-shadow: 5px 5px 5px #ebedeb;
+  user-select: none;
   cursor: pointer;
 }
 
