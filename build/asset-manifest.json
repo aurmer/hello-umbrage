@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/hello-umbrage/build/static/css/main.8c31d719.chunk.css",
+    "main.js": "/hello-umbrage/build/static/js/main.782756fe.chunk.js",
+    "main.js.map": "/hello-umbrage/build/static/js/main.782756fe.chunk.js.map",
+    "runtime-main.js": "/hello-umbrage/build/static/js/runtime-main.32edd51b.js",
+    "runtime-main.js.map": "/hello-umbrage/build/static/js/runtime-main.32edd51b.js.map",
+    "static/css/2.7c35e809.chunk.css": "/hello-umbrage/build/static/css/2.7c35e809.chunk.css",
+    "static/js/2.fca509ff.chunk.js": "/hello-umbrage/build/static/js/2.fca509ff.chunk.js",
+    "static/js/2.fca509ff.chunk.js.map": "/hello-umbrage/build/static/js/2.fca509ff.chunk.js.map",
+    "index.html": "/hello-umbrage/build/index.html",
+    "precache-manifest.083d2e68bdcf2eea7036db9d0d31e5f2.js": "/hello-umbrage/build/precache-manifest.083d2e68bdcf2eea7036db9d0d31e5f2.js",
+    "service-worker.js": "/hello-umbrage/build/service-worker.js",
+    "static/css/2.7c35e809.chunk.css.map": "/hello-umbrage/build/static/css/2.7c35e809.chunk.css.map",
+    "static/css/main.8c31d719.chunk.css.map": "/hello-umbrage/build/static/css/main.8c31d719.chunk.css.map",
+    "static/js/2.fca509ff.chunk.js.LICENSE.txt": "/hello-umbrage/build/static/js/2.fca509ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32edd51b.js",
+    "static/css/2.7c35e809.chunk.css",
+    "static/js/2.fca509ff.chunk.js",
+    "static/css/main.8c31d719.chunk.css",
+    "static/js/main.782756fe.chunk.js"
+  ]
+}
