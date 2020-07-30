@@ -63,6 +63,10 @@ body {
   overflow: hidden;
 }
 
+.upper-navbar a.active {
+  border-bottom-color: rgba(139,55,6,1);
+}
+
 .upper-navbar a:visited {
   color: black;
 }
@@ -193,7 +197,7 @@ body {
   border: 0;
   border-radius: 5px;
   background-color: transparent;
-  background-image: url('/assets/icons/search-icon.svg');
+  background-image: url('/umbrage-landgate/assets/icons/search-icon.svg');
   background-repeat: no-repeat;
   background-size: 24px;
   background-position: center;
@@ -248,6 +252,7 @@ body {
 
 .search-result-card {
   display: flex;
+  height: 188px;
   justify-content: space-between;
   margin: 18px 20px 0 30px;
 }
@@ -255,6 +260,7 @@ body {
 .search-result-img {
   width: 188px;
   height: 188px;
+  object-fit: cover;
 }
 
 .search-result-info {
@@ -327,6 +333,7 @@ body {
   height: 130px;
   width: 601px;
   box-shadow: 5px 5px 5px #ebedeb;
+  cursor: pointer;
 }
 
 .listing-card-label {
@@ -439,4 +446,21 @@ body {
 
  .popup-container {
    font-size: 1.3em;
+ }
+
+ .popup-container .list-name {
+   padding-top: 0;
+   line-height: 1em;
+ }
+
+ .popup-container .list-price {
+   padding-top: 0;
+ }
+
+ .popup-container .list-data-label {
+   padding-top: 10px;
+ }
+
+ .popup-container .list-data {
+   padding-top: 0px;
  }

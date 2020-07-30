@@ -52,7 +52,7 @@ export const locations: Array<LotLocation> = [
     active: true,
     latitude: 31.502700,
     longitude: -99.586870,
-    image: "fm_lot_312.jpg"
+    image: "cr_lot_312.jpg"
   },
   {
     name: "Country Road Lot 362",

@@ -5,7 +5,7 @@ type AppState = {
     [key: string]: StateLocation
   },
   searchInputString: string,
-  submittedSearch: string,
+  searchQuery: string,
   searchResults: Array<string>,
   mapCenter: {
     lat: number,
@@ -42,4 +42,8 @@ type StateLocation = {
   longitude: number,
   image: string,
   favorite: boolean
+}
+
+interface String {
+  reverse(): string;
 }

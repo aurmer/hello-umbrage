@@ -7,43 +7,42 @@ const ListingContainer: React.SFC<ListingInfoProps> = (props: ListingInfoProps) 
 
   const dispatch = useDispatch()
 
-  String.prototype.reverse = function () {
-    return this.split('').reverse().join('')
+  const formattedPrice = formatPrice(props.loc.price)
+
+  function handleFavClick (id: string,e: React.MouseEvent<HTMLImageElement, MouseEvent>): void {
+    e.stopPropagation()
+    dispatch({type:"TOGGLE_FAVORITE",value:id})
   }
 
-  const formattedPrice = formatPrice(props.price)
-
-  function handleFavClick (e: React.MouseEvent<HTMLImageElement, MouseEvent>): void {
-    dispatch({type:"TOGGLE_FAVORITE",value:e.currentTarget.id})
+  function handleListingClick (id: string): void {
+    dispatch({type:"SELECT_RESULT",value:id})
   }
 
-  function pickStar (): string {
-    return (props.favorite) ? "assets/icons/filled-star.svg" : "assets/icons/empty-star.svg"
-  }
+  const starIcon = (props.loc.favorite) ? "assets/icons/filled-star.svg" : "assets/icons/empty-star.svg"
   
     return (
     <>
-      <div className="listing-card">
+      <div className="listing-card" onClick={()=>handleListingClick(props.loc.name+props.loc.streetAddress)}>
         <div className="listing-card-label">Lot For Sale</div>
         <div className="favorite-listing">
-          <img id={props.name+props.address} className="listing-star-icon" src={pickStar()} alt="favorite" onClick={handleFavClick}/>
+          <img className="listing-star-icon" src={starIcon} alt="favorite" onClick={(e)=>handleFavClick(props.loc.name+props.loc.streetAddress,e)}/>
         </div>
         <div className="listing-info">
           <div className="listing-col">
-            <div className="list-name">{props.name}</div>
+            <div className="list-name">{props.loc.name}</div>
             <div className="list-price">{formattedPrice}</div>
-            <div className="active-badge" style={(!props.active) ? {display:"none"} : {}}>
+            <div className="active-badge" style={(!props.loc.active) ? {display:"none"} : {}}>
               <div className="green-dot"/>
               Active
             </div>
           </div>
           <div className="listing-col">
-            <ListingSnippet label="Street Address" data={props.address}/>
-            <ListingSnippet label="Net Mineral Acreage" data={formatNumberAsString(props.acreage)}/>
+            <ListingSnippet label="Street Address" data={props.loc.streetAddress}/>
+            <ListingSnippet label="Net Mineral Acreage" data={formatNumberAsString(props.loc.netAcreage)}/>
           </div>
           <div className="listing-col">
-            <ListingSnippet label="Location" data={props.location}/>
-            <ListingSnippet label="Price Per Acre" data={formatPrice(props.ppa)}/>
+            <ListingSnippet label="Location" data={props.loc.location}/>
+            <ListingSnippet label="Price Per Acre" data={formatPrice(Math.round(props.loc.price/props.loc.netAcreage))}/>
           </div>
         </div>
       </div>

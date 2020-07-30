@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/umbrage-landgate/static/css/main.58fcb68a.chunk.css",
+    "main.js": "/umbrage-landgate/static/js/main.8745deee.chunk.js",
+    "main.js.map": "/umbrage-landgate/static/js/main.8745deee.chunk.js.map",
+    "runtime-main.js": "/umbrage-landgate/static/js/runtime-main.36d2adbb.js",
+    "runtime-main.js.map": "/umbrage-landgate/static/js/runtime-main.36d2adbb.js.map",
+    "static/css/2.7c35e809.chunk.css": "/umbrage-landgate/static/css/2.7c35e809.chunk.css",
+    "static/js/2.fca509ff.chunk.js": "/umbrage-landgate/static/js/2.fca509ff.chunk.js",
+    "static/js/2.fca509ff.chunk.js.map": "/umbrage-landgate/static/js/2.fca509ff.chunk.js.map",
+    "index.html": "/umbrage-landgate/index.html",
+    "precache-manifest.3e30f24d98951bd26448c59e952b0013.js": "/umbrage-landgate/precache-manifest.3e30f24d98951bd26448c59e952b0013.js",
+    "service-worker.js": "/umbrage-landgate/service-worker.js",
+    "static/css/2.7c35e809.chunk.css.map": "/umbrage-landgate/static/css/2.7c35e809.chunk.css.map",
+    "static/css/main.58fcb68a.chunk.css.map": "/umbrage-landgate/static/css/main.58fcb68a.chunk.css.map",
+    "static/js/2.fca509ff.chunk.js.LICENSE.txt": "/umbrage-landgate/static/js/2.fca509ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36d2adbb.js",
+    "static/css/2.7c35e809.chunk.css",
+    "static/js/2.fca509ff.chunk.js",
+    "static/css/main.58fcb68a.chunk.css",
+    "static/js/main.8745deee.chunk.js"
+  ]
+}

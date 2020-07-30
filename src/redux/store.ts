@@ -6,9 +6,9 @@ import { locations } from '../constants'
 const initState: AppState = {
   locations: {},
   searchInputString: "",
-  submittedSearch: "",
+  searchQuery: "",
   searchResults: [],
-  mapCenter: {lat:31.1352,lng:-99.3351},
+  mapCenter: {lat:31.4052,lng:-99.3351},
   mapZoom: 6.5
 }
 
@@ -103,9 +103,9 @@ const reducer: Reducer<AppState, CustAction> = (oldState: (AppState | undefined)
   }
 
   else if (action.type === "SUBMIT_SEARCH" && newState.searchInputString !== "") {
-    newState.submittedSearch = newState.searchInputString.trim()
+    newState.searchQuery = newState.searchInputString.trim()
     newState.searchInputString = newState.searchInputString.trim()
-    const unsortedSearchResults = Object.values(newState.locations).reduce(filterLocationsBySearch.bind(null,newState.submittedSearch),[])
+    const unsortedSearchResults = Object.values(newState.locations).reduce(filterLocationsBySearch.bind(null,newState.searchQuery),[])
     const {newMapCenter,newMapZoom,sortedResults} = calcMapStateAndSortResults(newState,unsortedSearchResults)
     newState.mapCenter = newMapCenter
     newState.mapZoom = newMapZoom

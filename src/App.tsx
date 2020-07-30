@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="app">
-      <HeaderBar />
+      <HeaderBar activePageLink="Lease / Sell" />
       <MapApp />
     </div>
   );

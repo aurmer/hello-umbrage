@@ -6,16 +6,15 @@ type ListingSnippetProps = {
 }
 
 type ListingInfoProps = {
-  name: string,
-  price: number,
-  active: boolean,
-  address: string,
-  acreage: number,
-  location: string,
-  favorite: boolean,
-  ppa: number
+  loc: StateLocation
 }
 
-interface String {
-  reverse(): string;
+type HeaderBarProps = {
+  activePageLink: string
+}
+
+type PageLinkProps = {
+  name: string,
+  href: string,
+  active: string
 }

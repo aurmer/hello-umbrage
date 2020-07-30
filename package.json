@@ -30,6 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-github": "PUBLIC_URL=umbrage-landgate react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

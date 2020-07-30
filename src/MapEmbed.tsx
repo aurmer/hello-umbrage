@@ -24,8 +24,7 @@ const blurredResultIcon = L.icon({
  *  INITIALIZE MAP
  */
 const initMap = () => {
-  // @ts-ignore
-  window.myMap = L.map('map',{zoomSnap: .25}).setView([37.090240,-95.712891], 4.6)
+  myMap = L.map('map',{zoomSnap: .25}).setView([37.090240,-95.712891], 4.6)
   const Stamen_Terrain =
   L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}',
   {
@@ -37,8 +36,7 @@ const initMap = () => {
     // This prop is required by lib, but not included by type definition.
     ext: 'png'
   })
-  // @ts-ignore
-  Stamen_Terrain.addTo(window.myMap)
+  Stamen_Terrain.addTo(myMap)
 }
 
 function removeAllMarkers (markers: Array<L.Marker>): void {
@@ -49,12 +47,35 @@ function removeAllMarkers (markers: Array<L.Marker>): void {
   }
 }
 
+function renderPopup (loc: StateLocation): string {
+  return `
+    <div class="popup-container">
+      <div class="list-name">
+      ${loc.name}
+      </div>
+      <div class="list-price">
+        ${formatPrice(loc.price)}
+      </div>
+      <div class="list-data-label">
+      Net Mineral Acreage
+      </div>
+      <div class="list-data">
+      ${loc.netAcreage}
+      </div>
+    </div>
+  `
+}
+
 const MapEmbed: React.SFC = () => {
   
-  const results: Array<string> = useSelector( (state: AppState) => state.searchResults )
-  const mapCenter: {lat: number, lng: number} | null = useSelector( (state: AppState) => state.mapCenter )
-  const mapZoom: number | null = useSelector( (state: AppState) => state.mapZoom )
-  const locations: {[key: string]: StateLocation } = useSelector( (state: AppState) => state.locations )
+  const appState: AppState = useSelector( (state: AppState) => state )
+  
+  const results: Array<string> = appState.searchResults
+  const mapCenter: {lat: number, lng: number} | null = appState.mapCenter
+  const mapZoom: number | null = appState.mapZoom
+  const locations: {[key: string]: StateLocation } = appState.locations
+  const submittedSearch: string = appState.searchQuery
+  
   const dispatch = useDispatch()
   
   //only called once on initial render
@@ -63,11 +84,6 @@ const MapEmbed: React.SFC = () => {
   useEffect( () => {
     removeAllMarkers(markerArray)
 
-    if (mapCenter && mapZoom) {
-      // @ts-ignore
-      window.myMap.setView([mapCenter.lat,mapCenter.lng],mapZoom)
-    }
-
     results.forEach( (locID,idx) => {
       const markerIcon = (idx === 0) ? focusResultIcon : blurredResultIcon
       const newMarker = L.marker([locations[locID].latitude,locations[locID].longitude],{
@@ -75,38 +91,29 @@ const MapEmbed: React.SFC = () => {
         alt: locations[locID].name + locations[locID].streetAddress
       })
       
-      // @ts-ignore
-      const markerNode = newMarker.addTo(window.myMap)
+      const markerNode = newMarker.addTo(myMap)
 
-      markerNode.bindPopup(`
-        <div class="popup-container">
-          <div class="list-name">
-          ${locations[locID].name}
-          </div>
-          <div class="list-price">
-            ${formatPrice(locations[locID].price)}
-          </div>
-          <div class="list-data">
-          ${locations[locID].netAcreage} acres
-          </div>
-        </div>
-      `)
+      markerNode.bindPopup(renderPopup(locations[locID]))
+
       markerNode.addEventListener('mouseover', (e: LeafletEvent) => {
         e.target.openPopup();
       })
 
       markerNode.addEventListener('click', (e: LeafletEvent) => {
-        // @ts-ignore
-        const locID = e.originalEvent.target.alt
+        const locID = e.sourceTarget._icon.alt
         dispatch({type:"SELECT_RESULT",value: locID})
-        // @ts-ignore
-        window.myMap.closePopup()
       })
 
       markerArray.push(newMarker)
     })
-    //dependancy is serialized to prevent 'Referential Inequality' from triggering this useEffect
+    //useEffect dependancy is serialized to prevent 'Referential Inequality' from triggering this useEffect
   },[JSON.stringify(results)])
+
+  useEffect( () => {
+    if (mapCenter && mapZoom) {
+      myMap.setView([mapCenter.lat,mapCenter.lng],mapZoom)
+    }
+  },[mapZoom,mapCenter?.lat,mapCenter?.lng,submittedSearch])
 
   return (
     <figure className="map-embed">

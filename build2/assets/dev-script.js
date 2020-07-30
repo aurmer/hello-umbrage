@@ -6,7 +6,7 @@
                           position: absolute;
                           height: 100vh;
                           width: 100vw;
-                          background-image: url('assets/images/mockup_resize.png');
+                          background-image: url('/assets/images/mockup_resize.png');
                           z-index: 9999;
                           overflow: hidden;">
   `)

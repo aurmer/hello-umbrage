@@ -6,21 +6,14 @@ const MapNearbyListings: React.SFC = () => {
 
   const results: Array<string> = useSelector( (state: AppState) => state.searchResults )
   const locations: {[key: string]: StateLocation } = useSelector( (state: AppState) => state.locations )
-  // const dispatch = useDispatch()
 
-  const listings = results.map((locID) => {
-    const pricePerAcre: number = Math.round(locations[locID].price / locations[locID].netAcreage)
-    return (<ListingContainer key={locations[locID].name+locations[locID].location}
-                              name={locations[locID].name}
-                              price={locations[locID].price}
-                              active={locations[locID].active}
-                              address={locations[locID].streetAddress}
-                              acreage={locations[locID].netAcreage}
-                              location={locations[locID].location}
-                              favorite={locations[locID].favorite}
-                              ppa={pricePerAcre}/>)
-  }
-  )
+  const listings = results.reduce((acc: Array<JSX.Element>,locID,idx) => {
+    if(idx > 0) {
+      acc.push((<ListingContainer key={locations[locID].name+locations[locID].location} loc={locations[locID]}/>))
+      return acc
+    }
+    return acc
+  },[])
 
   return (
     <section className="listings">
